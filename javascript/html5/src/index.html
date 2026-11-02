@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f3f6f1" />
+    <meta name="description" content="A tactile, full-screen game of Dice Cup Five." />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./img/dice-icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Dice Cup Five</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Dice Cup Five home">
+            <span class="brand-mark glyph" aria-hidden="true">⚄</span>
+          <span><span class="brand-dice">dice</span><span class="brand-cup"> cup</span><span class="brand-five"> five</span></span>
+        </a>
+        <div class="turn-chip"><span class="turn-dot"></span><span id="turn-indicator">TURN 01 / 13</span></div>
+        <nav class="utility-actions" aria-label="Game actions">
+          <button class="icon-button" id="sound-button" type="button" title="Mute sound" aria-label="Mute sound">
+            <span class="glyph" aria-hidden="true">♫</span>
+          </button>
+          <button class="icon-button" id="fullscreen-button" type="button" title="Enter fullscreen" aria-label="Enter fullscreen">
+            <span class="glyph" aria-hidden="true">⛶</span>
+          </button>
+          <button class="icon-button" id="new-game-button" type="button" title="Start a new game" aria-label="Start a new game">
+            <span class="glyph" aria-hidden="true">↻</span>
+          </button>
+          <button class="icon-button" id="about-button" type="button" title="About Dice Cup Five" aria-label="About Dice Cup Five" aria-haspopup="dialog" aria-controls="about-dialog">
+            <span class="glyph" aria-hidden="true">&#9432;</span>
+          </button>
+        </nav>
+      </header>
+
+      <main class="game-layout">
+        <section class="play-area" aria-label="Dice game">
+          <div class="play-heading">
+            <div>
+              <p class="eyebrow" id="round-label">YOUR TURN · ROUND 01</p>
+              <h1 id="play-title">Make it count.</h1>
+              <p class="play-tagline">BUILT FOR LUCK &amp; SECOND THOUGHTS</p>
+            </div>
+            <div class="roll-counter" aria-live="polite">
+              <span class="roll-counter-label">ROLL</span>
+              <strong id="roll-count">0</strong><span class="roll-count-total">/ 3</span>
+            </div>
+          </div>
+
+          <div class="dice-stage" id="dice-stage">
+            <div class="stage-grid" aria-hidden="true"></div>
+            <canvas id="dice-canvas" aria-label="Five animated 3D dice"></canvas>
+            <fieldset class="dice-controls" id="dice-controls" aria-label="Dice to keep"></fieldset>
+            <div class="turn-start-overlay" id="turn-start-overlay">Roll dice to start your turn</div>
+            <div class="stage-caption">
+              <span class="caption-marker"></span>
+              <span id="stage-message">Ready when you are</span>
+            </div>
+          </div>
+
+          <div class="play-footer">
+            <div class="turn-hint" id="turn-hint" aria-live="polite">
+              <span class="hint-index">01</span>
+              <span>Roll all five to start your turn.</span>
+            </div>
+            <button class="roll-button" id="roll-button" type="button">
+              <span class="glyph" aria-hidden="true">⚄</span>
+              <span class="roll-label">Roll dice</span>
+              <kbd>SPACE</kbd>
+            </button>
+          </div>
+          <p class="score-hint" id="score-hint">After rolling, choose a row on the scorecard to lock in your points.</p>
+        </section>
+
+        <aside class="score-panel" aria-label="Scorecard">
+          <div class="score-heading">
+            <div>
+              <p class="eyebrow">ONE CATEGORY PER TURN</p>
+              <h2>Scorecard<span class="scorecard-count" id="scorecard-count">0 / 13</span></h2>
+            </div>
+            <span class="score-heading-mark glyph" aria-hidden="true">✓</span>
+          </div>
+          <div class="score-sheet" id="score-sheet"></div>
+          <fieldset class="totals" aria-label="Score totals">
+            <div class="total-row"><span>Upper section</span><strong id="upper-total">0</strong></div>
+            <div class="total-row bonus-row"><span>Upper bonus <small>63+ points</small></span><strong id="upper-bonus">0</strong></div>
+            <div class="total-row"><span>Lower section</span><strong id="lower-total">0</strong></div>
+            <div class="total-row bonus-row"><span>Five of a Kind bonuses</span><strong id="repeat-bonus">0</strong></div>
+            <div class="total-row grand-total"><span>Total score</span><strong id="grand-total">0</strong></div>
+          </fieldset>
+          <div class="game-over" id="game-over" hidden>
+            <span class="game-over-icon glyph" aria-hidden="true">✦</span>
+            <span>Thirteen turns. One final score.</span>
+            <button class="text-button" id="play-again-button" type="button">Play again</button>
+          </div>
+        </aside>
+      </main>
+    </div>
+    <dialog class="about-dialog" id="about-dialog" aria-labelledby="about-title">
+      <header class="about-heading">
+        <h2 class="about-title" id="about-title">About Dice Cup Five</h2>
+        <button class="icon-button" id="close-about-button" type="button" title="Close About" aria-label="Close About" autofocus>
+          <span class="glyph" aria-hidden="true">&#215;</span>
+        </button>
+      </header>
+      <div class="about-content">
+        <section aria-labelledby="about-game-title">
+          <h3 id="about-game-title">About Dice Cup Five</h3>
+          <p>Five dice. Three rolls. Thirteen chances to make them count.</p>
+          <p>Dice Cup Five is a strategic dice game where players aim to achieve the highest score over thirteen turns. The game combines elements of chance and skill, challenging players to make the best decisions with each roll.</p>
+        </section>
+        <section aria-labelledby="about-author-title">
+          <figure class="author" style="float: right;">
+          <img src="img/oliver_dice.jpg" alt="Portrait of Oliver Merkel">
+          <figcaption>Oliver Merkel, <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0" target="_blank">cc-by-nc-nd 4.0</a>.</figcaption>
+          </figure>
+          <h3>Legal</h3>
+          <p>Copyright (c) 2026<br>
+          <b>@author</b> <em>Oliver Merkel</em>, Merkel(dot) Oliver(at) web(dot) de.<br>
+          All rights reserved.<br>
+          Logos, brands, and trademarks belong to their respective owners.</p>
+          <p>All source code also including code parts written in HMTL, Javascript, CSS is under MIT License.</p>
+        </section>
+        <section aria-labelledby="license-title">
+          <h3 id="license-title">MIT License</h3>
+          <p>Copyright (c) 2026 Oliver Merkel</p>
+          <p>Permission is hereby granted, free of charge, to any person obtaining a copy
+            of this software and associated documentation files (the "Software"), to deal
+            in the Software without restriction, including without limitation the rights
+            to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+            copies of the Software, and to permit persons to whom the Software is
+            furnished to do so, subject to the following conditions:</p>
+          <p>The above copyright notice and this permission notice shall be included in all
+            copies or substantial portions of the Software.</p>
+          <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+            IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+            FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+            AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+            LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+            OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+            SOFTWARE.</p>
+            <p>If not otherwise stated all graphics (independent of its format) are licensed under
+            <br><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="img/icons/cc_by_nc_sa.png"></a><br>
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0" target="_blank">Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+            International License</a>.</p>
+        </section>
+        <section aria-labelledby="third-party-title">
+          <h3 id="third-party-title">Third-party licenses</h3>
+          <p>This game includes Three.js and its RoundedBoxGeometry addon, licensed under
+            the MIT License. Copyright &copy; 2010-2026 three.js authors.</p>
+          <p>The MIT permission, notice requirement, and warranty disclaimer above also
+            apply to these components. Third-party code remains subject to its respective
+            license terms and copyright notices.</p>
+          <p><a href="./thirdparty/three/LICENSE" target="_blank" rel="noopener">Three.js license notice</a></p>
+        </section>
+      </div>
+    </dialog>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

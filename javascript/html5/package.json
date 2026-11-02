@@ -1,0 +1,21 @@
+{
+  "name": "dice-cup-five",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "check": "biome check src/game.js src/main.js src/dice-scene.js src/sound.js src/sw.js src/css/styles.css src/index.html test/game.test.js test/main.test.js test/sound.test.js vite.config.js vitest.config.js package.json biome.json"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.4",
+    "@vitest/coverage-v8": "^5.0.5",
+    "jsdom": "^26.1.0",
+    "vite": "^6.3.5",
+    "vitest": "^5.0.5"
+  }
+}

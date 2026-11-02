@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <title>Dice Cup Five</title>
+  <rect x="8" y="8" width="112" height="112" rx="28" fill="#6f9630"/>
+  <g transform="rotate(-8 64 64)">
+    <rect x="25" y="25" width="78" height="78" rx="17" fill="#e9e7de"/>
+    <g fill="#000000">
+      <circle cx="45" cy="45" r="6"/><circle cx="83" cy="45" r="6"/>
+      <circle cx="64" cy="64" r="6"/><circle cx="45" cy="83" r="6"/>
+      <circle cx="83" cy="83" r="6"/>
+    </g>
+  </g>
+</svg>

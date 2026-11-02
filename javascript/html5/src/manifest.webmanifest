@@ -1,0 +1,19 @@
+{
+  "name": "Dice Cup Five",
+  "short_name": "Dice Cup Five",
+  "description": "A tactile, full-screen game of Dice Cup Five.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#f3f6f1",
+  "theme_color": "#f3f6f1",
+  "icons": [
+    {
+      "src": "./img/dice-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
