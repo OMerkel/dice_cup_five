@@ -424,6 +424,10 @@ h1 {
   background: rgb(91 184 164 / 12%);
 }
 
+.die-toggle.is-held:not(:disabled):hover {
+  background: rgb(91 184 164 / 24%);
+}
+
 .die-value {
   color: transparent;
   font-size: 1px;
